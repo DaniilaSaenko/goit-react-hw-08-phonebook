@@ -43,4 +43,5 @@ export const Contacts = () => {
       </WrappContacts>
     </ContainerContacts>
   );
-}
+};
+// export default Contacts;

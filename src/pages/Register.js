@@ -8,4 +8,5 @@ export const Register = () => {
       <RegisterForm />
     </ContainerLogin>
   );
-}
+};
+// export default Register;
