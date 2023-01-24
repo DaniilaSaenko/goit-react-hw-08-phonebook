@@ -1,6 +1,6 @@
 import { ContainerHome, TitleHome, LinkHome } from 'pages/Pages.styled';
 
-const Home = () => {
+export const Home = () => {
   return (
     <ContainerHome>
       <TitleHome>
@@ -9,4 +9,4 @@ const Home = () => {
     </ContainerHome>
   );
 };
-export default Home;
+// export default Home;
