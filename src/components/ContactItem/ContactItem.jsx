@@ -4,13 +4,13 @@ import { delContact } from 'redux/operations';
 
 import { Container, Item, Button } from './ContactItem.styled';
 
-export const Contact = ({ name, phone, id }) =>{
+export const Contact = ({ name, number, id }) =>{
   const dispatch = useDispatch();
   const deleteCont = () => dispatch(delContact(id));
   return (
     <Container>
       <Item>
-        {name} :  {phone}
+        {name} :  {number}
       </Item>
       <Button type="button" onClick={deleteCont}>
         Delete 🗑
@@ -21,6 +21,6 @@ export const Contact = ({ name, phone, id }) =>{
 
 Contact.propTypes = {
   name: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
 };

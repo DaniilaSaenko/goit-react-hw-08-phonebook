@@ -2,27 +2,25 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  margin-left: auto;
+  align-items: center;
+  gap: 12px;
 `;
 
-export const Item = styled.p`
-  width: 350px;
-  height: 20px;
-  margin-bottom: 20px;
-  margin-left: auto;
-  font-size: 18px;
+export const Username = styled.p`
+  font-size: 22px;
+  font-weight: 700;
 `;
 
 export const Button = styled.button`
   align-items: center;
   margin-left: 8px;
-  display: block;
-  height: 25px;
+  width: 100px;
+  height: 35px;
   border-radius: 4px;
   border: none;
   background: #4169E1;
-  font-size: 14px;
-  font-weight: normal;
+  font-size: 16px;
+  font-weight: bold;
   text-transform: capitalize;
   cursor: pointer;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.20);

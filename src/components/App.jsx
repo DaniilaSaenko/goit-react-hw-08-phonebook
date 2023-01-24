@@ -1,46 +1,73 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ToastContainer} from 'react-toastify';
-import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
-import { fetchContacts } from 'redux/operations';
+import { PrivateRoute } from './PrivateRoute';
+import { PublicRoute } from './PublicRoute';
+import { refreshUser } from 'redux/auth/operations';
 
-import { ContactForm }  from './ContactForm/ContactForm';
-import { ContactsList } from './ContactsList/ContactsList';
-import { Filter }  from './Filter/Filter';
+import { selectIsRefreshing } from 'redux/auth/selectors';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from './Layout';
+import { Home } from 'pages/Home';
+import { Contacts } from 'pages/Contacts';
+import { Register } from 'pages/Register';
+import { Login } from 'pages/Login';
 import { Loader } from './Loader/Loader';
 
-
-import { Container, Title, Empty } from './App.styled';
+import { Container } from './App.styled';
 
 
 export const App = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const isFetchingCurrentUser = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
   return (
     <Container>
-      <Title>Phonebook</Title>
-      <ContactForm />
-      <Title>Contacts</Title>
-      {isLoading && <Loader />}
-      <Filter />
-      {contacts.length > 0 && (
+      {isFetchingCurrentUser ? (
+        <Loader />
+      ) : (
         <>
-          <ContactsList />
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route
+                index
+                element={
+                  <PublicRoute>
+                    <Home />
+                  </PublicRoute>
+                }
+              />
+              <Route
+                path="contacts"
+                element={
+                  <PrivateRoute>
+                    <Contacts />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="register"
+                element={
+                  <PublicRoute restricted>
+                    <Register />
+                  </PublicRoute>
+                }
+              />
+              <Route
+                path="login"
+                element={
+                  <PublicRoute restricted>
+                    <Login />
+                  </PublicRoute>
+                }
+              />
+            </Route>
+          </Routes>
         </>
       )}
-      {isLoading && !error && <h4>Request in progress...</h4>}
-      {error && <h2>ERROR...</h2>}
-      {contacts.length <= 0 && !error && !isLoading && (      
-        <Empty>Sorry. Your phonebok is empty.</Empty>
-      )}
-      <ToastContainer position="top-center" reverseOrder={false}  />
     </Container>
   );
 };

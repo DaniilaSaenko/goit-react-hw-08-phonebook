@@ -4,10 +4,10 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto;
+  margin-left:  auto;
 
   width: 400px;
-  height: 220px;
+  height: 300px;
   margin-left: 20px;
   margin-top: 10px;
   padding: 20px;
@@ -39,13 +39,17 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  align-items: center;
-  margin-top: 25px;
-  display: inline-flex;
-  border-radius: 4px;
-  height: 35px;
-  border: none;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin-top: 25px;
+    display: flex;
+    border-radius: 4px;
+    width: 100px;
+    height: 45px;
+    border: none;
   background: #4169E1;
+  text-align: center;
   font-size: 16px;
   font-weight: bold;
   text-transform: capitalize;
