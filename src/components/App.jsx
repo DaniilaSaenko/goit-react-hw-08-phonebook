@@ -13,7 +13,7 @@ import { Layout } from './Layout/Layout';
 import { Register } from 'pages/Register';
 import { Login } from 'pages/Login';
 import { Contacts } from 'pages/Contacts';
-import { NotFoundPage } from 'pages/NotFound';
+// import { NotFoundPage } from 'pages/NotFound';
 
 
 import { Loader } from './Loader/Loader';
@@ -23,7 +23,7 @@ const Home = lazy(() => import('../pages/Home'));
 // const Register = lazy(() => import('../pages/Register'));
 // const Login = lazy(() => import('../pages/Login'));
 // const Contacts = lazy(() => import('../pages/Contacts'));
-// const NotFoundPage = lazy(() => import('../pages/NotFound'));
+const NotFoundPage = lazy(() => import('../pages/NotFound'));
 
 export const App = () => {
   const dispatch = useDispatch();
