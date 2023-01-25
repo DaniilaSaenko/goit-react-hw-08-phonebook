@@ -42,12 +42,12 @@ export const App = () => {
           <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<Navigate to="home"></Navigate>} />
-                <Route path="home" element={<Home />} /> 
-                <Route path="register"
-                  element={<PublicRoute> <Register /> </PublicRoute>} />
-                <Route path="login"
+                <Route path="/home" element={<Home />} /> 
+                <Route path="/register"
+                  element={<PublicRoute restricted> <Register /> </PublicRoute>} />
+                <Route path="/login"
                   element={<PublicRoute restricted> <Login /> </PublicRoute>} />                
-                <Route path="contacts"
+                <Route path="/contacts"
                   element={<PrivateRoute> <Contacts /> </PrivateRoute>} />
                 <Route path="*" element={<NotFound/>} />
               </Route> 
