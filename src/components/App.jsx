@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-// import { lazy } from 'react';
+import { lazy } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -9,21 +9,21 @@ import { refreshUser } from 'redux/auth/operations';
 import { selectIsRefreshing } from 'redux/auth/selectors';
 
 import { Layout } from './Layout/Layout';
-import { Home } from 'pages/Home';
-import { Register } from 'pages/Register';
-import { Login } from 'pages/Login';
-import { Contacts } from 'pages/Contacts';
-import { NotFoundPage } from 'pages/NotFound';
+
+import { Home } from 'pages/HomePage';
+import { Register } from 'pages/RegisterPage';
+import { Login } from 'pages/LoginPage';
+import { Contacts } from 'pages/ContactsPage';
 
 
 import { Loader } from './Loader/Loader';
 import { Container } from './App.styled';
 
-// const Home = lazy(() => import('../pages/Home'));
-// const Register = lazy(() => import('../pages/Register'));
-// const Login = lazy(() => import('../pages/Login'));
-// const Contacts = lazy(() => import('../pages/Contacts'));
-// const NotFoundPage = lazy(() => import('../pages/NotFound'));
+// const Home = lazy(() => import('../pages/HomePage'));
+// const Register = lazy(() => import('../pages/RegisterPage'));
+// const Login = lazy(() => import('../pages/LoginPage'));
+// const Contacts = lazy(() => import('../pages/ContactsPage'));
+const NotFound = lazy(() => import('../pages/NotFoundPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -49,7 +49,7 @@ export const App = () => {
                   element={<PublicRoute restricted> <Login /> </PublicRoute>} />                
                 <Route path="contacts"
                   element={<PrivateRoute> <Contacts /> </PrivateRoute>} />
-                <Route path="*" element={<NotFoundPage/>} />
+                <Route path="*" element={<NotFound/>} />
               </Route> 
           </Routes>
         </>

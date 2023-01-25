@@ -4,7 +4,7 @@ export const Home = () => {
   return (
     <ContainerHome>
       <TitleHome>
-        Your personal phonebook app <LinkHome to="/register">📲</LinkHome>
+        Your personal phonebook app <LinkHome to="/register">☎️</LinkHome>
       </TitleHome>
     </ContainerHome>
   );

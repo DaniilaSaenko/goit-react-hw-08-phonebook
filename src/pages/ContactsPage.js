@@ -27,13 +27,13 @@ export const Contacts = () => {
 
   return (
     <ContainerContacts>
-      <TitleContacts >Contacts</TitleContacts>
-      <WrappContacts >
+      <TitleContacts>Contacts</TitleContacts>
+      <WrappContacts>
         <ContactForm />
         {error && <SubTitle>Error...</SubTitle>}
         {isLoading && <Loader />}
         {contacts.length > 0 ? (
-          <DivContacts >
+          <DivContacts>
             <Filter name="filter" />
             <ContactsList />
           </DivContacts>

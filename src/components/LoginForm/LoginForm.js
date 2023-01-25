@@ -21,15 +21,13 @@ export const LoginForm = () => {
     <Form onSubmit={handleSubmit} autoComplete="on">
       <Label>
         Email
-        <Input  type="email" name="email" />
+        <Input type="email" name="email" placeholder="Enter your email" />
       </Label>
       <Label>
         Password
-        <Input type="password" name="password" />
+        <Input type="password" name="password" placeholder="Enter your password" />
       </Label>
-      <Button  type="submit">
-        Login
-      </Button>
+      <Button type="submit">Login</Button>
     </Form>
   );
 };
