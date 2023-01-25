@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
@@ -17,8 +18,18 @@ export const register = createAsyncThunk(
     try {
       const res = await axios.post('/users/signup', credentials);
       setAuthHeader(res.data.token);
+      // alert('Welcome!');
+      Notify.success(`Welcome!`, {
+        fontSize: '16px',
+        width: '350px',
+      });
       return res.data;
     } catch (error) {
+      // alert(`Registration is invalid`);
+      Notify.failure(`Registration is invalid`, {
+        fontSize: '16px',
+        width: '350px',
+      });
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -30,8 +41,18 @@ export const logIn = createAsyncThunk(
     try {
       const res = await axios.post('/users/login', credentials);
       setAuthHeader(res.data.token);
+      // alert('Welcome!');
+      Notify.success(`Welcome!`, {
+        fontSize: '16px',
+        width: '350px',
+      });
       return res.data;
     } catch (error) {
+      // alert(`Login is invalid`);
+      Notify.failure(`Login is invalid`, {
+        fontSize: '16px',
+        width: '350px',
+      });
       return thunkAPI.rejectWithValue(error.message);
     }
   }

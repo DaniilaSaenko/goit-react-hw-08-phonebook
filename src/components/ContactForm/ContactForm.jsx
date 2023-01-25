@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { addContact } from 'redux/operations';
 import { useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import { Label, Form, Input, Button } from './ContactForm.styled';
 
@@ -39,7 +40,16 @@ export const ContactForm = () => {
         contact => contact.name.toLowerCase() === name.toLowerCase()
       )
     ) {
-      return alert(`${name} is already in contacts.`);
+      // return alert(`${name} is already in contacts.`);
+      Notify.warning(
+        `Name ${name} is already in your contacts`,
+        {
+          background: '#eebf31',
+          fontSize: '16px',
+          width: '350px',
+        }
+      );
+      return;
     }
 
     const newContact = { id: nanoid(), name, number };
